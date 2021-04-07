@@ -33,3 +33,7 @@ a :hover{
     border:none;
     color: black;
 }
+/*when user clicks down on linl*/
+a:active{
+    color: yellow;
+}
