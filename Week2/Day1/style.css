@@ -33,7 +33,7 @@ a :hover{
     border:none;
     color: black;
 }
-/*when user clicks down on linl*/
+/*when user clicks down on link*/
 a:active{
     color: yellow;
 }
