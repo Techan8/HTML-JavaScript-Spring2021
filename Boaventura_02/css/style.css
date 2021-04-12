@@ -1,0 +1,67 @@
+html,body{
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+    background-color: darkred; 
+    color: whitesmoke;
+    font-size: medium;
+    
+}
+
+#container{
+    width: 970px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+h1{
+    width: 950px;
+    padding: 10px;
+    text-align: center;
+    background-color: black;
+    border: 5px solid whitesmoke;
+
+}
+
+.sections{
+    width: 950px;
+    padding: 10px;
+    background-color:black;
+    text-align: left;
+    
+}
+img{
+     border: 10px solid whitesmoke;
+}
+
+.nav-bar{
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    line-height: 50px;
+    padding-bottom: 20px;
+    border: 5px solid whitesmoke;
+
+ }
+
+.btn:link{
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 10px;
+
+}
+
+.btn:visited{
+    color:red
+}
+
+.btn:hover{
+    background-color: whitesmoke;
+    color: black;
+}
