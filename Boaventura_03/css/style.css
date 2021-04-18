@@ -1,0 +1,93 @@
+body,html{
+    display: flex;
+    justify-content: center;
+    background-color:coral;
+    
+}
+#container{
+    width: 1000px;
+    height: auto;
+    padding: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px darkslategray;
+
+}
+header{
+    height: 50px;
+    padding: 10px;
+    background-color:lightgray;
+    text-align: center;
+    font-family:'Permanent Marker', cursive;
+    border: 5px solid black;
+    
+}
+    
+h1{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    width: 990px;
+    height: 50px;
+    background-color:lightgray ;
+    text-align: center;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    width: 100px;
+    height: 50px;
+    color: black;
+    margin-right: 5px;
+    line-height: 50px;
+    text-decoration:underline;
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: 5px 5px 5px;
+}
+.btn:hover{
+    background-color: blueviolet;
+    color: whitesmoke;
+}
+
+section{
+    float: left;
+    width: 650px;
+    padding: 10px;
+    font-family: cursive;
+}
+
+.title{
+    text-decoration:underline;
+    font-family: 'Permanent Marker', cursive;
+    padding: 5px 0 5px 5px;
+
+}
+img{
+    border: 3px solid black;
+}
+aside{
+    float: right;
+    width: 300px;
+    padding: 10px;
+    font-family: cursive;
+
+}
+.box{
+    position: fixed;
+    border: 5px solid black;
+    padding: 10px;
+    background-color: lightgray;
+    width: 280px;
+
+}
+footer{
+    width: 1000px;
+    height: 50px;
+    background-color: lightgray;
+    clear: both;
+    text-align: center;
+    border-top: 3px solid black;
+    margin-top: 10px;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigment Bio Part 3</title>
+    <style>
+        body{
+            background-image: url(images/question.jpeg); opacity: 75%;
+            background-repeat: repeat;
+            background-size: 100px;
+            border-radius: 10px;
+        }
+        hr{
+            display:flex;
+            border: 2px solid black;
+            background-color: coral;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+    <div id="container">
+        <header style="background-color: coral; color: black;">
+            <h1>Maite Boaventura</h1>
+        </header>
+        <hr>
+        <nav style="background-color: coral;">
+            <a href="index.html" class="btn">Bio</a>
+            <a href="education.html" class="btn">Schools</a>
+            <a href="#" class="btn">Riddles</a>
+        </nav>
+        <section style="color: black;">
+            <h2 class="title">Riddles</h2>
+                <h2>1. What breaks yet never falls, and what falls yet never breaks?</h2>
+                <span id="answer1"></span>
+                <br>
+                <button onclick="showAnswer('answer1','Day and night')">Show Answer</button>
+                <h2>2. People make me, save me, change me, raise me. What am I?</h2>
+                <span id="answer2"></span>
+                <br>
+                <button onclick="showAnswer('answer2','Money')">Show Answer</button>
+                <h2>3. What is so fragile that saying its name breaks it?</h2>
+                <span id="answer3"></span>
+                <br>
+                <button onclick="showAnswer('answer3','Silence')">Show Answer</button>
+                <h2>4. What can fill a room but takes up no space?</h2>
+                <span id="answer4"></span>
+                <br>
+                <button onclick="showAnswer('answer4','Light')">Show Answer</button>
+                <h2>5. If you drop me I’m sure to crack, but give me a smile and I’ll always smile back. What am I?
+                </h2>
+                <span id="answer5"></span>
+                <br>
+                <button onclick="showAnswer('answer5','A mirror')">Show Answer</button>
+                <br>
+        </section>
+        <footer style="background-color: coral;">
+            <p class="copy">&copy; Maite Boaventura 2021 HTML JavaScript Class</p>
+        </footer>
+
+    </div>
+    <script src="js/riddle.js"></script>
+
+</body>
+
+</html>
