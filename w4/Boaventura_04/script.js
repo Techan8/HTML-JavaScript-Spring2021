@@ -8,7 +8,7 @@ ctx.fillRect(85,302,100,100)
 ctx.strokeRect(85,302,100,100)
 
 ctx.lineWidth = "5"
-ctx.strokestyle = "rgb(255,0,0)"
+ctx.strokeStyle = "rgb(255,0,0)"
 ctx.moveTo(85,682)
 ctx.lineTo(278,549)
 ctx.stroke()
