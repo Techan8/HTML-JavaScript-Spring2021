@@ -15,7 +15,7 @@ var gameOver = true
 var mario = new Image()
 mario.src = 'images/mario.png'
 
-mario.onload = function(){
+mario.onload = function () {
     main()
 }
 
@@ -33,62 +33,60 @@ var frames = fps
 document.addEventListener('keydown', keyPressDown)
 document.addEventListener('keyup', keyPressUp)
 
-function main(){
+function main() {
     //call frame
     timer = requestAnimationFrame(main)
 
     //clear canvas 
-    ctx.clearRect(0,0,canvas.width, canvas.height)
-    if(gameOver){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    if (gameOver) {
         ctx.fillStyle = "black"
         ctx.font = "30px Arial"
-        ctx.textAlign =  "center"
-        ctx.fillText("Press Space to Start",canvas.width/2, canvas.height/2)
+        ctx.textAlign = "center"
+        ctx.fillText("Press Space to Start", canvas.width / 2, canvas.height / 2)
     }
-    else{
-        if(!gameOver && sec > 0){
-            
+    else {
+        if (!gameOver && sec > 0) {
+
             runStartTimer()
             drawStartTimer()
-        }else{
-        if(gameOver == false && fuel > 0 && sec <=0){
-            //update values
-            xpos++
-            fuel--
+        } else {
+            if (gameOver == false && fuel > 0 && sec <= 0) {
+                //update values
+                xpos++
+                fuel--
+            }
+
         }
-        
-    }
 
-    }
-    
+        //draw the things
 
-    //draw the things
-
-    //draw start and finish lines
+        //draw start and finish lines
         drawStartLine()
         drawFinishLine()
 
-    //car    
+        //car    
         drawCar()
         drawCarImage()
 
-     //draw fuel bar hud
-    
+        //draw fuel bar hud
+
         drawFuelBar()
         drawFuelText()
 
-    //determine if game is over
-    if(xpos > finish + 10 || fuel <=0){
-        drawResults()
-    }
+        //determine if game is over
+        if (xpos > finish + 10 || fuel <= 0) {
+            drawResults()
+        }
 
+    }
 }
 
-function keyPressDown(e){
+function keyPressDown(e) {
     console.log(e.keyCode)
     //pressing spacebar
-    if(e.keyCode == 32){
-        if(!gameOver && fuel <=0){
+    if (e.keyCode == 32) {
+        if (!gameOver && fuel <= 0) {
             restartGame()
         }
         gameOver = false
@@ -99,84 +97,84 @@ function keyPressDown(e){
     }
 
 }
-function keyPressUp(e){
+function keyPressUp(e) {
     console.log(e.keyCode)
     //pressing spacebar
-    if(e.keyCode == 32){
-        document.addEventListener("keydown", keyPressDown) 
+    if (e.keyCode == 32) {
+        document.addEventListener("keydown", keyPressDown)
     }
 }
 
-function drawStartLine(){
+function drawStartLine() {
     ctx.fillStyle = "black"
     ctx.fillRect(start, 50, 10, 500)
 }
 
-function drawFinishLine(){
+function drawFinishLine() {
     ctx.fillStyle = "black"
     ctx.fillRect(finish, 50, 10, 500)
 }
 
-function drawCar(){
+function drawCar() {
     ctx.fillStyle = "red"
-    ctx.fillRect(xpos, canvas.height/2,30,20)
+    ctx.fillRect(xpos, canvas.height / 2, 30, 20)
 }
-function drawCarImage(){
-    ctx.drawImage(mario,xpos, canvas.height/2-30,30,50)
+function drawCarImage() {
+    ctx.drawImage(mario, xpos, canvas.height / 2 - 30, 30, 50)
 }
-function drawFuelBar(){
+function drawFuelBar() {
     var barCurrentWidth = fullBarWidth * getFuelPercentage()
 
     ctx.fillStyle = "black"
     ctx.fillRect(start, 30, fullBarWidth, 10)
-    if(fuel>0)
+    if (fuel > 0)
         ctx.fillStyle = "red"
-        ctx.fillRect(start, 30, barCurrentWidth, 10)
+    ctx.fillRect(start, 30, barCurrentWidth, 10)
 }
 
-function getFuelPercentage(){
-    return fuel/startFuel
+function getFuelPercentage() {
+    return fuel / startFuel
 }
 
-function drawFuelText(){
+function drawFuelText() {
     ctx.fillStyle = "black"
     ctx.font = "25px Arial"
-    ctx.fillText(fuel,start,25)
+    ctx.fillText(fuel, start, 25)
 }
 
-function runStartTimer(){
+function runStartTimer() {
     frames -= 1
-    if(frames < 0){
+    if (frames < 0) {
         frames = fps
         sec -= 1
     }
 }
 
-function drawStartTimer(){
+function drawStartTimer() {
     ctx.fillStyle = "black"
     ctx.font = "25px Arial"
     ctx.textAlign = "center"
-    ctx.fillText(sec, canvas.width/2,canvas.height/2)
+    ctx.fillText(sec, canvas.width / 2, canvas.height / 2)
 }
 
-function randomNumber(high, low){
-    return Math.round(Math.random() * (high- low) + low)
+function randomNumber(high, low) {
+    return Math.round(Math.random() * (high - low) + low)
 }
-function drawResults(){
-    if(xpos > finish){
+function drawResults() {
+    if (xpos > finish) {
         ctx.fillStyle = "black"
         ctx.font = "25px Arial"
         ctx.textAlign = "center"
-        ctx.fillText("You made it to the finish, You Win!!!", canvas.width/2,canvas.height/2)
+        ctx.fillText("You made it to the finish, You Win!!!", canvas.width / 2, canvas.height / 2)
     }
-    else{
+    else {
         ctx.fillStyle = "black"
         ctx.font = "25px Arial"
         ctx.textAlign = "center"
-        ctx.fillText("You ran out of fuel, You Lose :(", canvas.width/2,canvas.height/2)
+        ctx.fillText("You ran out of fuel, You Lose :(", canvas.width / 2, canvas.height / 2)
     }
 }
 
-function restartGame(){
+function restartGame() {
     location.reload()
 }

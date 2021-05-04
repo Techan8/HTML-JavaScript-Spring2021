@@ -1,0 +1,39 @@
+body,html{
+    display: flex;
+    justify-content: center;
+    background-image: url(images/tournament.jpg);
+    background-size:auto;
+    background-repeat: no-repeat;
+    
+}
+
+#canvas{
+    background-image: 
+    url(images/logo.png),
+    url(images/kameha.png),
+    url(images/kamehouse.png), 
+    url(images/tournament2.png),
+    url(images/start.jpg),
+    url(images/finish.jpg),
+    url(images/tournament1.jpg);
+
+    background-size: 
+    300px 100px,
+    700px 120px,
+    125px 125px, 
+    125px 125px,
+    25px 500px,
+    25px 500px,
+    cover;
+
+    background-position: 
+    top right,
+    top left,
+    bottom left, 
+    bottom right,
+    left,
+    right,
+    center;
+    background-repeat: 
+    no-repeat;
+} 
