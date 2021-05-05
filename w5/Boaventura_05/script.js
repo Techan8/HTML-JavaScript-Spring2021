@@ -44,8 +44,9 @@ function main() {
  
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     if (gameOver) {
-        ctx.fillStyle = "darkred"
-        ctx.font = "30px Permanent Marker"
+        
+        ctx.fillStyle = "black"
+        ctx.font = "40px Permanent Marker"
         ctx.textAlign = "center"
         ctx.fillText("Press Space to Start", canvas.width / 2, canvas.height / 2)
     }
@@ -167,8 +168,8 @@ function runStartTimer() {
 }
 
 function drawStartTimer() {
-    ctx.fillStyle = "darkred"
-    ctx.font = "25px Permanent Marker"
+    ctx.fillStyle = "black"
+    ctx.font = "40px Permanent Marker"
     ctx.textAlign = "center"
     ctx.fillText(sec, canvas.width / 2, canvas.height / 2)
 }
