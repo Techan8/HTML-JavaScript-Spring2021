@@ -3,7 +3,7 @@ var ctx = canvas.getContext('2d')
 
 var timer = requestAnimationFrame(main)
 
-var xpos = 20
+var xpos = -5
 
 var start = 58
 var finish = 956
@@ -23,8 +23,8 @@ vegeta.onload = function(){
     main()
 }
 
-var startFuel = randomNumber(900, 1000)
-var anotherStartFuel = randomNumber(900, 1000)
+var startFuel = randomNumber(high = 920, low = 770)
+var anotherStartFuel = randomNumber(high = 920, low = 770)
 var fuel = startFuel
 var anotherFuel = anotherStartFuel
 var fullBarWidth = 512
@@ -72,7 +72,7 @@ function main() {
         drawFuelText()
         drawAnotherFuelText()
 
-        if (xpos > finish + 10 || fuel <= 0) {
+        if (xpos > finish + 90 || fuel <= 0) {
             drawResults()
         }
 
@@ -97,11 +97,17 @@ function keyPressUp(e) {
 }
 
 function drawStartLine() {
+    ctx.strokeStyle = "black"
+    ctx.strokeRect(start, 135, 10, 500)
+    ctx.lineWidth = 7
     ctx.fillStyle = "yellow"
     ctx.fillRect(start, 135, 10, 500)
 }
 
 function drawFinishLine() {
+    ctx.strokeStyle = "black"
+    ctx.strokeRect(finish, 135, 10, 500)
+    ctx.lineWidth = 7
     ctx.fillStyle = "red"
     ctx.fillRect(finish, 135, 10, 500)
 }
@@ -116,22 +122,24 @@ function drawAnotherCarImage() {
 
 function drawFuelBar() {
     var barCurrentWidth = fullBarWidth * getFuelPercentage()
-
-    ctx.fillStyle = "black"
-    ctx.fillRect(start, 30, fullBarWidth, 10)
+    ctx.strokeStyle = "white"
+    ctx.strokeRect(start, 37, fullBarWidth, 10)
+    ctx.fillStyle = "rgba(0, 0, 0, 0.75)"
+    ctx.fillRect(start, 37, fullBarWidth, 10)
     if (fuel > 0)
         ctx.fillStyle = "orange"
-    ctx.fillRect(start, 30, barCurrentWidth, 10)
+    ctx.fillRect(start, 37, barCurrentWidth, 10)
 }
 
 function drawAnotherFuelBar() {
     var barCurrentWidth = fullBarWidth * getFuelPercentage()
-
-    ctx.fillStyle = "black"
-    ctx.fillRect(start, 65, fullBarWidth, 10)
+    ctx.strokeStyle = "white"
+    ctx.strokeRect(start, 70, fullBarWidth, 10)
+    ctx.fillStyle = "rgba(0, 0, 0, 0.75)"
+    ctx.fillRect(start, 70, fullBarWidth, 10)
     if (fuel > 0)
         ctx.fillStyle = "blue"
-    ctx.fillRect(start, 65, barCurrentWidth, 10)
+    ctx.fillRect(start, 70, barCurrentWidth, 10)
 }
 
 function getFuelPercentage() {
@@ -141,13 +149,13 @@ function getFuelPercentage() {
 function drawFuelText() {
     ctx.fillStyle = "orange"
     ctx.font = "25px Permanent Marker"
-    ctx.fillText(fuel, start, 25)
+    ctx.fillText(fuel, start, 33)
 }
 
 function drawAnotherFuelText() {
     ctx.fillStyle = "blue"
     ctx.font = "25px Permanent Marker"
-    ctx.fillText(fuel, start, 60)
+    ctx.fillText(fuel, start, 68)
 }
 
 function runStartTimer() {
@@ -169,7 +177,8 @@ function randomNumber(high, low) {
     return Math.round(Math.random() * (high - low) + low)
 }
 function drawResults() {
-    if (xpos > finish) {
+    if (xpos +90> finish) {
+        
         ctx.fillStyle = "yellow"
         ctx.font = "30px Permanent Marker"
         ctx.textAlign = "center"
