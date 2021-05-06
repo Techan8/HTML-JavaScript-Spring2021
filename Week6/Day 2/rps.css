@@ -1,0 +1,14 @@
+html,body,nav{
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    width: 1000px;
+    border: 1px solid black;
+
+}
+button{
+    background-color: aqua;
+    border-radius: 10px;
+}
