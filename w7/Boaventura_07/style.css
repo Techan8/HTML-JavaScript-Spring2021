@@ -1,0 +1,67 @@
+html,body{
+    display: flex;
+    justify-content: center;
+    background-image: url(images/background.jpg);
+    background-position: center;
+
+}
+#container{
+
+    box-sizing: 1300px, 900px;
+    box-shadow: 0px 0px 40px 20px #0ff;
+    border: none;
+    padding: 20px;
+    background-image: url(images/thunder.jpg);
+    background-position: center;
+    border-radius: 10px;
+}
+canvas{
+
+    background-image: 
+    url(images/rpsbg.png),
+    url(images/thunders.gif);
+    background-position:
+    cover,
+    center;
+    background-size: 
+    975px 800px,
+    1200px 930px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    
+}
+h1{
+    display: flex;
+    justify-content: center;
+    border: 1px solid #0ff;
+    box-shadow: 0px 0px 20px 10px #0ff;
+    background-color:black;
+    border-radius: 10px;
+    font-family: "Reggae One";
+    color:#0ff;
+    padding: 10px;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    font-family: "Reggae one";
+    font-size: 25px;
+    color:#0ff;
+    width: 200px;
+    height: 75px;
+    background: none;
+    border: 1px solid #0ff;
+    box-shadow: 0px 0px 20px 10px #0ff;
+    background-color: black;
+    border-radius: 10px;
+    margin-right: 35px;
+    
+}
+#option{
+    display: flex;
+    justify-content: center;
+}
