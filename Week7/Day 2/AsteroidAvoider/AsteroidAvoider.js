@@ -9,13 +9,26 @@ var asteroids = new Array()
 var gameOver = true
 var gameStates = []
 var currentState = 0
+var score = 0
+var highScore = 0
 
-//Create an instance of the PlayerShip
-ship = new PlayerShip()
-
+//utility functions
 function randomRange(high, low) {
     return Math.random() * (high - low) + low
 }
+
+function gameStart(){
+    //For Loop to create the instances of Asteroids
+
+    for (var i = 0; i < numAsteroids; i++) {
+    asteroids[i] = new Asteroid()
+    }
+
+    //Create an instance of the PlayerShip
+    ship = new PlayerShip()
+
+}
+
 
 //Constructor Function for Asteroid Class
 function Asteroid() {
@@ -35,12 +48,6 @@ function Asteroid() {
         ctx.restore()
 
     }
-}
-
-//For Loop to create the instances of Asteroids
-
-for (var i = 0; i < numAsteroids; i++) {
-    asteroids[i] = new Asteroid()
 }
 
 //Setup the keyboard Event Handlers
@@ -68,14 +75,24 @@ function pressKeyDown(e) {
         //checking for spacebar
         if (e.keyCode == 32) {
             if (currentState == 2) {
-                //game over screen
+                //game over screen restarts game
                 currentState = 0
+                //resets number of Asteroids
+                numAsteroids = 10
+                //empties asteroids array
+                asteroids = []
+                //resets the score
+                score = 0
+                gameStart()
                 main()
             }
             else {
+                //main screen starts the game
+                gameStart()
                 currentState = 1
                 gameOver = false
                 main()
+                scoreTimer()
                 console.log("space")
             }
         }
@@ -196,6 +213,14 @@ gameStates[0] = function () {
 }
 
 gameStates[1] = function () {
+
+    //code for displaying score
+    ctx.save()
+    ctx.font = "15px Arial"
+    ctx.fillStyle = "white"
+    ctx.fillText("Score: " + score.toString(), canvas.width - 150, 30)
+    ctx.restore()
+
     //update player movement
     //vertical movement
     if (ship.up) {
@@ -239,19 +264,44 @@ gameStates[1] = function () {
         ship.move()
         ship.drawShip()
     }
+
+    while(asteroids.length < numAsteroids){
+        asteroids.push(new Asteroid)
+    }
 }
 
 gameStates[2] = function () {
-    ctx.save()
-    ctx.font = "30px Arial"
-    ctx.fillStyle = "red"
-    ctx.textAlign = "center"
-    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2 - 30)
-    ctx.font = "15px Arial"
-    ctx.fillStyle = "red"
-    ctx.textAlign = "center"
-    ctx.fillText("Press Space To Play Again", canvas.width / 2, canvas.height / 2 + 20)
-    ctx.restore()
+    if(score > highScore){
+        //set new High Score
+        highScore = score
+        ctx.save()
+        ctx.font = "30px Arial"
+        ctx.fillStyle = "red"
+        ctx.textAlign = "center"
+        ctx.fillText("Game Over, your high score was:  " + score.toString(), canvas.width / 2, canvas.height / 2 - 60)
+        ctx.fillText("Your new high score is:  " + highScore.toString(), canvas.width / 2, canvas.height / 2 - 30)
+        ctx.fillText("New Record", canvas.width / 2, canvas.height / 2)
+        ctx.font = "15px Arial"
+        ctx.fillStyle = "red"
+        ctx.textAlign = "center"
+        ctx.fillText("Press Space To Play Again", canvas.width / 2, canvas.height / 2 + 20)
+        ctx.restore()
+
+    }else{
+        //keep same new High Score
+        ctx.save()
+        ctx.font = "30px Arial"
+        ctx.fillStyle = "red"
+        ctx.textAlign = "center"
+        ctx.fillText("Game Over, your score was:  " + score.toString(), canvas.width / 2, canvas.height / 2 - 60)
+        ctx.fillText("Your high score is:  " + highScore.toString(), canvas.width / 2, canvas.height / 2 - 30)
+        ctx.font = "15px Arial"
+        ctx.fillStyle = "red"
+        ctx.textAlign = "center"
+        ctx.fillText("Press Space To Play Again", canvas.width / 2, canvas.height / 2 + 20)
+        ctx.restore()
+    }
+    
 }
 
 function main() {
@@ -268,4 +318,18 @@ function main() {
 
 function detectCollision(distance, calcDistance) {
     return distance < calcDistance
+}
+
+//Timer for score
+function scoreTimer(){
+    if(!gameOver){
+        score++
+        //using modulus that returns remainder of a decimal
+        //checks to see if remainder is divisble by 5
+        if(score % 5 == 0){
+            numAsteroids += 10
+            console.log(numAsteroids)
+        }
+        setTimeout(scoreTimer, 1000)//ms
+    }
 }

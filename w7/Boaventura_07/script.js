@@ -51,7 +51,9 @@ function keyPressUp(e) {
     if (gameOver == true) {
         if (e.keyCode == 32) {
             //this is space bar
-            changeState()
+            //game(4);
+            gameOver = false
+            changeState() 
         }
     }
 }
@@ -67,7 +69,7 @@ function changeState() {
 }
 
 function game(pChoice) {
-
+    gameOver = true
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     var cChoice = Math.floor(Math.random() * 2.99)
 
@@ -325,7 +327,9 @@ function game(pChoice) {
 
 
 gameStates[0] = function () {
-
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    
     ctx.fillStyle = "#0ff"
     ctx.strokeStyle = "black"
     ctx.lineWidth = 2
@@ -340,12 +344,13 @@ gameStates[0] = function () {
     ctx.font = "30px Reggae One"
     ctx.fillText("Press Spacebar To Start", canvas.width / 2, canvas.height / 2 + 25)
     ctx.strokeText("Press Spacebar To Start", canvas.width / 2, canvas.height / 2 + 25)
+ 
 
 }
 
 gameStates[1] = function () {
+    if(!gameOver){
     
-    gameOver = false
     option.style.display = "block"
     //title
     ctx.fillStyle = "#0ff"
@@ -369,39 +374,19 @@ gameStates[1] = function () {
     ctx.drawImage(rock, 200, 650, 70, 60)
     ctx.drawImage(paper, 450, 650, 80, 60)
     ctx.drawImage(scissors, 700, 650, 70, 60)
-    ctx.drawImage(pChoice, 200, 650, 70, 60)
-    
-    if(pScore || cScore >= 5){
-        pScore || cScore == 0
-        gameOver = true
-        currentState++
     }
+   
 
 }
 
-gameStates[2] = function() {
-    ctx.fillStyle = "#0ff"
-    ctx.strokeStyle = "black"
-    ctx.lineWidth = 2
-    ctx.shadowColor = "#0ff"
-    ctx.shadowOffsetX = 0
-    ctx.shadowOffsetY = 0
-    ctx.shadowBlur = 10
-    ctx.textAlign = "center"
-    ctx.font = "50px Reggae One"
-    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2 - 50)
-    ctx.strokeText("Game Over", canvas.width / 2, canvas.height / 2 - 50)
-    ctx.font = "30px Reggae One"
-    ctx.fillText("Press Spacebar To Play Again", canvas.width / 2, canvas.height / 2 + 25)
-    ctx.strokeText("Press Spacebar To Play Again", canvas.width / 2, canvas.height / 2 + 25)
-}
+
 function main() {
     //clear canvas
+    if(!gameOver)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
+    
     gameStates[currentState]()
     
-
 
     //call main function
     timer = requestAnimationFrame(main)

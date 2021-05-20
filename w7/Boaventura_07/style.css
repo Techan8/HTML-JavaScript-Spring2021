@@ -7,7 +7,7 @@ html,body{
 }
 #container{
 
-    box-sizing: 1300px, 900px;
+    box-sizing: border-box;/*1300px, 900px;*/
     box-shadow: 0px 0px 40px 20px #0ff;
     border: none;
     padding: 20px;
