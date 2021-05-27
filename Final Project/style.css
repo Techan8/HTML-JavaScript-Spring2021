@@ -1,0 +1,17 @@
+html,body{
+    display: flex;
+    justify-content: center;
+    background-image: url(images/htmlbg1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+canvas{
+    background-image: url(images/space.gif);
+    background-position: center;
+    background-size: 1000px, 800px;
+    background-repeat: no-repeat;
+    border: 10px solid rgb(248, 162, 32);
+}

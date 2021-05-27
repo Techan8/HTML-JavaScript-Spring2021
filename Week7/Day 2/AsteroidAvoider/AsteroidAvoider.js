@@ -3,7 +3,7 @@ var ctx = canvas.getContext('2d')
 var timer = requestAnimationFrame(main)
 var ship
 //var to setup number of asteroids
-var numAsteroids = 20
+var numAsteroids = 10
 //array for asteroids
 var asteroids = new Array()
 var gameOver = true
@@ -137,19 +137,19 @@ function PlayerShip() {
         if (this.up || this.left || this.right) {
             ctx.save()
             //Changes the drawing values to animate the flame
-            if (this.flamelength == 30) {
-                this.flamelength = 20
+            if (this.flamelength == -30) {
+                this.flamelength = -10
                 ctx.fillStyle = "yellow"
             } else {
-                this.flamelength = 30
+                this.flamelength = -30
                 ctx.fillStyle = "orange"
             }
             ctx.beginPath()
 
-            ctx.moveTo(0, this.flamelength)
-            ctx.lineTo(5, 5)
+            ctx.moveTo(this.flamelength, 0)
+            ctx.lineTo(-5, -5)
             ctx.lineTo(-5, 5)
-            ctx.lineTo(0, this.flamelength)
+            ctx.lineTo(this.flamelength, 0)
             ctx.closePath()
             ctx.fill()
             ctx.restore()
@@ -157,7 +157,7 @@ function PlayerShip() {
 
         ctx.fillStyle = "red"
         ctx.beginPath()
-        ctx.moveTo(0, -10)
+        ctx.moveTo(-10, 10)
         ctx.lineTo(10, 10)
         ctx.lineTo(-10, 10)
         ctx.lineTo(0, -10)
@@ -327,7 +327,7 @@ function scoreTimer(){
         //using modulus that returns remainder of a decimal
         //checks to see if remainder is divisble by 5
         if(score % 5 == 0){
-            numAsteroids += 10
+            numAsteroids += 1
             console.log(numAsteroids)
         }
         setTimeout(scoreTimer, 1000)//ms
