@@ -8,10 +8,45 @@ html,body{
 
 }
 
+#container{
+    background-color: rgba(12,240,229,0);
+    box-sizing: border-box;
+    border: 10px solid rgb(248, 162, 32) ;
+    box-shadow: 0px 0px 20px 10px #0ff;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+header{
+    display: flex;
+    justify-content: center;
+    border: 10px solid rgb(248, 162, 32) ;
+    box-shadow: 0px 0px 20px 10px #0ff;
+    background-image: url(images/kameha.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: rgb(248, 162, 32);
+}
+
+
 canvas{
     background-image: url(images/space.gif);
     background-position: center;
     background-size: 1000px, 800px;
     background-repeat: no-repeat;
     border: 10px solid rgb(248, 162, 32);
+    box-shadow: 0px 0px 20px 10px #0ff;
+    
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    color: rgb(248, 162, 32);
+    padding-top: 10px;
+    font-size: 25px;
+    font-family: 'VT323', monospace;
 }
