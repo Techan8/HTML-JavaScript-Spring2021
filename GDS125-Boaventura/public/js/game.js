@@ -8,7 +8,7 @@ var timer = setInterval(animate, interval);
 /*------------Use this if you want to implement States---------------*/
 
 
-var startButton = new GameObject({width:140, height:60});
+var startButton = new GameObject();
 startButton.img.src = `images/start.png`
 startButton.x =	(512)												//to move the start button in the screen x position
 startButton.y = (470)													//to move the start button in the screen x position
