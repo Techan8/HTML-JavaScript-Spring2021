@@ -11,7 +11,7 @@ var timer = setInterval(animate, interval);
 var startButton = new GameObject();
 startButton.img.src = `images/start.png`
 startButton.x =	(512)												//to move the start button in the screen x position
-startButton.y = (471)													//to move the start button in the screen x position
+startButton.y = (470)													//to move the start button in the screen x position
 
 var menuBackground = new GameObject();		//to place any image for the background
 menuBackground.img.src = `images/menu.png`	
