@@ -16,8 +16,9 @@ function main()
     ctx.arc(this.x, this.y, this.radius, 0, 360*Math.PI /180, true)
     ctx.closePath()
     ctx.fill()
-    //update position
+    
     x += 1
+    
 
     if (x > canvas.width + 40) 
     {
