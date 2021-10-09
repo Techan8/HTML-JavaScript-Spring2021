@@ -38,7 +38,7 @@ function Ball()
 		ctx.restore();
     }
 
-    //This changes the player's position
+    //This changes the Ball's position
 	this.move = function()
 	{
 		this.x += this.vx;
@@ -51,9 +51,6 @@ function animate()
 {
 	//Erase the Screen
 	ctx.clearRect(0,0,canvas.width, canvas.height);	
-	
-	//Move the Player
-	ball.x += 1;
 	
 	//Update the Screen
 	ball.draw();
