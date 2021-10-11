@@ -19,7 +19,7 @@ function GameObject(){
     //these are examples of properties in a class
     this.radius = randomRange(10,2)
     this.color = `rgb(${randomRange(0,255)},${randomRange(0,255)},${randomRange(0,255)})`//"yellow"
-    //Use multiplication instead of division so it goes faster *05 instead of /2
+    //Use multiplication instead of division so it goes faster *0.5 instead of /2
     this.x = canvas.width * 0.5//randomRange(canvas.width, 0)
     this.y = canvas.height * 0.5//randomRange(canvas.height, 0)
     this.vx = randomRange(30, -30)
