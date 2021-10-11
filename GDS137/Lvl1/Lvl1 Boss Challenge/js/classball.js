@@ -31,7 +31,11 @@ function Ball()
         ctx.fill()
 		ctx.restore();
 
-		
+		ctx.save()
+		ctx.font = "15px Arial"
+		ctx.fillStyle = "black"
+		ctx.fillText("Score: " + collisionScore.toString(), canvas.width - 150, 30)
+		ctx.restore()
     }
 
 
