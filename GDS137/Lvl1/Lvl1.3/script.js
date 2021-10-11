@@ -55,7 +55,7 @@ function animate()
 	//Move the Ball
 	ball.x += ball.vx
 
-    if(ball.x > canvas.width - ball.radius /2 || ball.x - ball.radius <0)
+    if(ball.x > canvas.width - ball.radius || ball.x - ball.radius <0)
     {
 		//ball.x = canvas.width - ball.radius
         ball.vx = -ball.vx;
