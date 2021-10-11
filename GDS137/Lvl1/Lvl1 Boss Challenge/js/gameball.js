@@ -25,8 +25,8 @@ function animate()
 		{
 			++ball.vx
 		}
-		collisionScore ++
-		ball.color = "red"
+		collisionScore ++ //collisionScore = collisionScore +1
+		ball.color = "red" //Change the color 
 		
 		
     }
@@ -43,8 +43,8 @@ function animate()
 			++ball.vy
 		}
 
-		collisionScore ++
-		ball.color = "cyan"
+		collisionScore ++ //Increase collision score
+		ball.color = "cyan" //Change the color 
 		
 		
     }
