@@ -64,7 +64,7 @@ function animate()
 		
 		
     }
-	
+	//lose condition - resets the ball to the middle of screen if passes L edge
 	if(ball.x -ball.radius < 0)
 
 	{
@@ -89,11 +89,11 @@ function animate()
 		
 		
     }*/
-	
+	//collision detection
 	if (ball.hitTestObject(paddle)) {
 		//change color
 		ball.color = "yellow";
-		ball.vx = -ball.vx
+		ball.vx = -ball.vx			// bounce against paddle
 	}
 	else {
 		ball.color = ball.color;
