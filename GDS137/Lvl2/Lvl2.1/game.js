@@ -6,8 +6,8 @@ var interval = 1000/60; //1000 ms or 1 second / FPS
 var paddle = new GameObject()
 
 //paddle position
-paddle.x = 25
-paddle.y = 400
+paddle.x = 5
+paddle.y = canvas.height/2
 
 //paddle size
 paddle.w = 20
