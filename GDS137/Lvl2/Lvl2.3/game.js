@@ -22,11 +22,20 @@ function animate()
 	{
 		console.log("Moving up");
 		paddle.y += 2;
+		if(paddle.y + paddle.h > canvas.height + paddle.h/2)
+		{
+			paddle.y = canvas.height - paddle.h /2
+		}
+
 	}
 	if(w)
 	{
 		console.log("Moving down");
 		paddle.y += -2;
+		if( paddle.y < 0 + paddle.h/2 )
+		{
+			paddle.y = 0 + paddle.h/2
+		}
 	}
 	
 	//Update the Screen
