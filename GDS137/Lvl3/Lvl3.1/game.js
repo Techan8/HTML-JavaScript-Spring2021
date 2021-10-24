@@ -12,24 +12,28 @@ ball.height = 80
 //Ball's velocity
 ball.vx = -2
 ball.vy = 0
+
 var paddle = new GameObject()
-
-//This is used to stop the player from moving through obstacles.
-var prevX;
-
+var paddle2 = new GameObject()
 //paddle position
 paddle.x = 5
 paddle.y = canvas.height/2
-
+paddle2.x = 1019
+paddle2.y = canvas.height/2
 //paddle size
 paddle.width = 20
 paddle.height = 200
+paddle2.width = 20
+paddle2.height = 200
+
+//This is used to stop the player from moving through obstacles.
+var prevX;
 
 function animate()
 {
 	//Erase the Screen
 	ctx.clearRect(0,0,canvas.width, canvas.height);
-	//Move the Player to the right
+	//Move the paddles up and down
 	if(s)
 	{
 		console.log("Moving up");
@@ -44,6 +48,20 @@ function animate()
 		
 	}
 
+	if(up)
+	{
+		console.log("Moving up");
+		paddle2.y += -2;
+		
+
+	}
+	if(down)
+	{
+		console.log("Moving down");
+		paddle2.y += 2;
+		
+	}
+
 	//paddle screen bounderies
 	if(paddle.y + paddle.height > canvas.height + paddle.height/2)
 	{
@@ -54,15 +72,29 @@ function animate()
 	{
 		paddle.y = 0 + paddle.height/2
 	}
+
+	if(paddle2.y + paddle2.height > canvas.height + paddle2.height/2)
+	{
+		paddle2.y = canvas.height - paddle2.height /2
+	}
+
+	if( paddle2.y < 0 + paddle2.height/2 )
+	{
+		paddle2.y = 0 + paddle2.height/2
+	}
 	
 	//Move the Ball
 	ball.x += ball.vx
 	ball.y += ball.vy
 
+	//lose condition - resets the ball to the middle of screen if passes R edge
     if(ball.x > canvas.width - ball.width/2 )//|| ball.x - ball.width/2 <0)
     {
-		ball.x = canvas.width - ball.width/2 
-        ball.vx = -ball.vx;
+		ball.x = canvas.width/2
+		ball.y = canvas.height/2
+
+		/*ball.x = canvas.width - ball.width/2 
+        ball.vx = -ball.vx;*/
 		//increase velocity at collision
 		/*if(ball.vx < 0)
 		{
@@ -86,6 +118,7 @@ function animate()
 		ball.y = canvas.height/2
 		
 	}
+	//boundary bottom screen
 	if(ball.y > canvas.height - ball.width/2 )
     {
 		ball.y = canvas.height - ball.width/2
@@ -104,16 +137,19 @@ function animate()
 		
 		
     }
-
+	
+	//boundary top screen
 	if (ball.y < 0 + ball.width/2 )
 	{
 		ball.y = 0 + ball.width/2 
 		ball.vy = -ball.vy ;
-	}
-	//collision detection
-	
-	
 
+		collisionScore ++ //Increase collision score
+		ball.color = "lightgreen" //Change the color
+	}
+
+
+	//collision detection
 	if (ball.hitTestObject(paddle)) 
 	{
 		ball.x = paddle.x + paddle.width/2 + ball.width/2
@@ -139,8 +175,34 @@ function animate()
 		
 	}
 
+	if (ball.hitTestObject(paddle2)) 
+	{
+		ball.x = paddle2.x - paddle2.width/2 - ball.width/2
+		//changes color of the ball
+		ball.color = "orange"
+		//changes the direction of the ball
+		ball.vx = -ball.vx
+
+		//changes ball's velocity direction
+		if(ball.y < paddle2.y - paddle2.y/6)
+     	{
+       		ball.vy = -ball.force
+     	}
+		else if(ball.y > paddle2.y + paddle2.height/6)
+		{
+			ball.vy = ball.force
+		}
+		
+	}
+	
+	else {
+		ball.color = ball.color;
+		
+	}
+
 	//Update the Screen
 	ball.drawCircle();
 	paddle.drawRect();
+	paddle2.drawRect();
 
 }
