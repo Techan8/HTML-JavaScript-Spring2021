@@ -13,6 +13,8 @@ paddle.y = canvas.height/2
 paddle.w = 20
 paddle.h = 200
 
+
+
 function animate()
 {
 	//Erase the Screen

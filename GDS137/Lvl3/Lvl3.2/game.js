@@ -29,7 +29,7 @@ paddle2.height = 200
 paddle.color = "blue"
 paddle2.color = "red"
 
-var Score =  new GameObject
+var Score =  new GameObject()
 var p1Score = 0
 var p2Score = 0
 
