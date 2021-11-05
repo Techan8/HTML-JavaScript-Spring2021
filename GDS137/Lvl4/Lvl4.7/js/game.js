@@ -148,6 +148,7 @@ function animate()
 	if(player.hitTestObject(goal))
 	{
 		goal.y = 10000;
+		
 	}
 	
 
