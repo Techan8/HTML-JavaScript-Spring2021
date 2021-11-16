@@ -4,7 +4,7 @@ var ctx = canvas.getContext('2d')
 var interval = 1000/60; //1000 ms or 1 second / FPS (always set before timer)
 var timer = setInterval(animate, interval);
 
-var player = new GameObject({x:canvas.width/2, y: 750, width:30, height:90, color: "red"})
+var player = new GameObject({x:canvas.width/2, y: 750, width:30, height:90, color: "rgba(12,240,229,0)"})
 var kiko = new Image()
 kiko.src = "images/kiko.png"
 kiko.onload = function()
@@ -36,7 +36,7 @@ line.onload = function()
     animate()
 }
 
-var bacteriaM = new GameObject({x: canvas.width/2, y: -70, width: 42, height: 42, color: "green"}) //-70
+var bacteriaM = new GameObject({x: canvas.width/2, y: -70, width: 42, height: 42, color: "rgba(12,240,229,0)"}) //-70
 var bacteria1 = new Image()
 bacteria1.src = "images/bacteria.png"
 bacteria1.onload = function()
@@ -44,7 +44,7 @@ bacteria1.onload = function()
     animate()
 }
 
-var bacteriaL = new GameObject({x: 165, y: -390, width: 42, height: 42, color: "green"}) //-390
+var bacteriaL = new GameObject({x: 165, y: -390, width: 42, height: 42, color: "rgba(12,240,229,0)"}) //-390
 var bacteria2 = new Image()
 bacteria2.src = "images/bacteria.png"
 bacteria2.onload = function()
@@ -52,7 +52,7 @@ bacteria2.onload = function()
     animate()
 }
 
-var bacteriaR = new GameObject({x: 840, y: -995, width: 42, height: 42, color: "green"}) //-995
+var bacteriaR = new GameObject({x: 840, y: -995, width: 42, height: 42, color: "rgba(12,240,229,0)"}) //-995
 var bacteria3 = new Image()
 bacteria3.src = "images/bacteria.png"
 bacteria3.onload = function()
@@ -60,7 +60,7 @@ bacteria3.onload = function()
     animate()
 }
 
-var toothM = new GameObject({x: canvas.width/2, y: -25, width: 47, height: 47, color: "cyan"}) //-25
+var toothM = new GameObject({x: canvas.width/2, y: -25, width: 47, height: 47, color: "rgba(12,240,229,0)"}) //-25
 var tooth1 = new Image()
 tooth1.src = "images/tooth.png"
 tooth1.onload =  function()
@@ -68,7 +68,7 @@ tooth1.onload =  function()
     animate()
 }
 
-var toothL = new GameObject({x: 165, y: -285, width: 47, height: 47, color: "cyan"}) //-285
+var toothL = new GameObject({x: 165, y: -285, width: 47, height: 47, color: "rgba(12,240,229,0)"}) //-285
 var tooth2 = new Image()
 tooth2.src = "images/tooth.png"
 tooth2.onload =  function()
@@ -76,7 +76,7 @@ tooth2.onload =  function()
     animate()
 }
 
-var toothR = new GameObject({x: 840, y: -560, width: 47, height: 47, color: "cyan"}) //-560
+var toothR = new GameObject({x: 840, y: -560, width: 47, height: 47, color: "rgba(12,240,229,0)"}) //-560
 var tooth3 = new Image()
 tooth3.src = "images/tooth.png"
 tooth3.onload =  function()
