@@ -154,12 +154,13 @@ function animate()
        pScore++
 		
 	}
-        if(pScore > highScore)
-        {
 
-            highScore = pScore
+    if(pScore > highScore)
+    {
 
-        }
+        highScore = pScore
+
+    }
 
     
 	//Update the Screen
