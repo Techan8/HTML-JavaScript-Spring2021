@@ -25,7 +25,7 @@ for(var i = 0; i < amt; i++)
 
     
 
-	circle[i] = new GameObject({x: rand(0, canvas.width), y: 0, width: 30, height: 30,});
+	circle[i] = new GameObject({x: rand(0, canvas.width), y: rand(-canvas.height, 0), width: 30, height: 30,});
 	circle[i].vy = rand(1,5);
 	circle[i].color = colors[Math.floor(rand(0,2.9))];
 }
@@ -35,7 +35,7 @@ for(var i = 0; i < amt; i++)
 
     
 
-	square[i] = new GameObject({x: rand(0, canvas.width), y: 0, width: 30, height: 30,});
+	square[i] = new GameObject({x: rand(0, canvas.width), y: rand(-canvas.height, 0), width: 30, height: 30,});
 	square[i].vy = rand(3,5);
 	square[i].color = colors2[Math.floor(rand(0,2.9))];
 }
@@ -52,7 +52,7 @@ function animate()
         if(circle[c].y > canvas.height)
         {
             circle[c].x = rand(0, canvas.width)
-            circle[c].y = 0
+            circle[c].y = rand(-canvas.height, 0)
             circle[c].vy = rand(3,5)
 			
         }
@@ -66,13 +66,13 @@ function animate()
 			for(var i = 0; i < circle.length; i++ )
 			{
 				circle[i].x = rand(0, canvas.width)
-            	circle[i].y = 0
+            	circle[i].y = rand(-canvas.height, 0)
             	circle[i].vy = rand(3,5)
 
 				square[i].x = rand(0, canvas.width)
-            	square[i].y = 0
+            	square[i].y = rand(-canvas.height, 0)
             	square[i].vy = rand(3,5)
-				
+
 			}
 			
 		}
@@ -89,7 +89,7 @@ function animate()
         if(square[s].y > canvas.height)
         {
             square[s].x = rand(0, canvas.width)
-            square[s].y = 0
+            square[s].y = rand(-canvas.height, 0)
             square[s].vy = rand(3,5)
         }
         
@@ -100,7 +100,7 @@ function animate()
 			setTimeout(changeColor, 500) // waits half a second before changing back to initial color
 			pScore++
 			square[s].x = rand(0, canvas.width)
-            square[s].y = 0
+            square[s].y = rand(-canvas.height, 0)
             square[s].vy = rand(3,5)
 		}
 		
