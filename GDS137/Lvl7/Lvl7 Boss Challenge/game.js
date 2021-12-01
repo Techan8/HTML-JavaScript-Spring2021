@@ -4,11 +4,19 @@ var ctx = canvas.getContext('2d')
 var interval = 1000/60; //1000 ms or 1 second / FPS (always set before timer)
 var timer = setInterval(animate, interval);
 
+
+
 var player = new GameObject({x:canvas.width/2, y: 750, width:30, height:90, color: "rgba(12,240,229,0)"})
 var kiko = new Image()
 kiko.src = "images/kiko.png"
 kiko.onload = function()
 {
+    animate()
+}
+
+var aura = new Image()
+aura.src = "images/aura.png"
+aura.onload = function(){
     animate()
 }
 
@@ -80,6 +88,30 @@ var toothR = new GameObject({x: 840, y: -560, width: 47, height: 47, color: "rgb
 var tooth3 = new Image()
 tooth3.src = "images/tooth.png"
 tooth3.onload =  function()
+{
+    animate()
+}
+
+var amt = 1
+var invincible = []
+var fairyPos = [165, canvas.width/2, 840]
+var superFairy = false
+
+for(var i = 0; i < amt; i++)
+{
+    invincible[i] = new GameObject()
+    invincible[i].x = fairyPos[Math.floor(rand(0,2.9))];
+    invincible[i].y = rand(-canvas.height, 0)
+    invincible[i].width = 47
+    invincible[i].height = 47
+    invincible[i].vy = rand(1,5);
+    invincible[i].color = "rgba(12,240,229,0)"
+
+}
+
+var fairy = new Image()
+fairy.src = "images/fairy.png"
+fairy.onload =  function()
 {
     animate()
 }
@@ -235,36 +267,52 @@ function animate()
     {
         toothL.y = 10000
         pScore = pScore + 50
+
     }
 
     if(player.hitTestObject(toothR))
     {
         toothR.y = 10000
         pScore = pScore + 50
+
     }
 
     if(player.hitTestObject(bacteriaM))
     {
-        bacteriaM.y = 10000
-        health = health - 20
-        pScore = 0
+        if(superFairy == false)
+        {
+            bacteriaM.y = 10000
+            health = health - 20
+            pScore = 0
+        }
+        
 
 
     }
 
     if(player.hitTestObject(bacteriaL))
     {
-        bacteriaL.y = 10000
-        health = health - 20
-        pScore = 0
+        if(superFairy == false)
+        {
+            bacteriaL.y = 10000
+            health = health - 20
+            pScore = 0
+        }
+        
 
     }
 
     if(player.hitTestObject(bacteriaR))
     {
-        bacteriaR.y = 10000
-        health = health - 20
-        pScore = 0
+        if(superFairy == false)
+        {
+            bacteriaR.y = 10000
+            health = health - 20
+            pScore = 0
+        }
+        
+        
+        
         
 
     }
@@ -276,7 +324,41 @@ function animate()
 
     }
 
-    
+    /************************************************************ INVINCIBILITY ******************************************************************/
+    for(var f = 0; f < invincible.length; f++)
+    {
+        invincible[f].y += invincible[f].vy
+
+        if(invincible[f].y > canvas.height)
+        {
+            invincible[f].x = fairyPos[Math.floor(rand(0,2.9))];
+            invincible[f].y = rand(-1500, -1000 )
+            invincible[f].vy = rand(1,5)
+			
+        }
+
+        if(player.hitTestObject(invincible[f]))
+		{
+			invincible[f].x = fairyPos[Math.floor(rand(0,2.9))];
+            invincible[f].y = rand(-1500, -1000 )
+            invincible[f].vy = rand(1,5)
+
+            health = health + 20
+            if(health > 100)
+            {
+                health = 100
+            }
+
+            if(superFairy == false)
+            {
+                setInvincible()
+            }
+
+			
+		}
+
+        invincible[f].drawRect();
+    }
     
     /************************************************************ DRAWS ON CANVAS ******************************************************************/
     
@@ -287,7 +369,17 @@ function animate()
     toothM.drawRect()
     toothL.drawRect()
     toothR.drawRect()
+
+    for(var f = 0; f < invincible.length; f++)
+    {
+        ctx.drawImage(fairy, invincible[f].x -39, invincible[f].y -35, 80, 70 )
+    }
+    
     ctx.drawImage(kiko, player.x -70, player.y -100 , 150, 150)
+    if(superFairy == true)
+    {
+        ctx.drawImage(aura, player.x -70, player.y -100 , 150, 150)
+    }
     ctx.drawImage(bacteria1, bacteriaM.x - 24.5, bacteriaM.y - 25, 50, 50)
     ctx.drawImage(bacteria2, bacteriaL.x - 24.5, bacteriaL.y - 25, 50, 50)
     ctx.drawImage(bacteria3, bacteriaR.x - 24.5, bacteriaR.y - 25, 50, 50)
@@ -356,7 +448,16 @@ function animate()
 
     }
 
-   
-
 }
 
+ /************************************************************ INVINCIBILITY FUNCTION ******************************************************************/
+
+function setInvincible()
+{
+    if(superFairy == false)
+    {
+        superFairy = true
+        setTimeout(function(){superFairy=false}, 5000)
+        
+    }
+}
