@@ -311,9 +311,6 @@ function animate()
             pScore = 0
         }
         
-        
-        
-        
 
     }
 
@@ -380,6 +377,7 @@ function animate()
     {
         ctx.drawImage(aura, player.x -70, player.y -100 , 150, 150)
     }
+
     ctx.drawImage(bacteria1, bacteriaM.x - 24.5, bacteriaM.y - 25, 50, 50)
     ctx.drawImage(bacteria2, bacteriaL.x - 24.5, bacteriaL.y - 25, 50, 50)
     ctx.drawImage(bacteria3, bacteriaR.x - 24.5, bacteriaR.y - 25, 50, 50)
@@ -389,7 +387,7 @@ function animate()
     healthBarText.drawHealthText()
     score.drawScore()
 
-    /************************************************************ GAME OVER CONDITION ******************************************************************/
+    /************************************************************ HEALTH & GAME OVER CONDITION ******************************************************************/
     if(health == 100)
     {
         ctx.fillStyle =  "blue" //"rgba(12,240,229,0)";
@@ -439,6 +437,8 @@ function animate()
     if(health <= 0)
     {
         ctx.clearRect(0,0,canvas.width, canvas.height);
+
+        superFairy = false 
 
         ctx.save();
 		ctx.fillStyle = "black"
