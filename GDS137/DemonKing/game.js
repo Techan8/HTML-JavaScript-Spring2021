@@ -5,7 +5,6 @@ var interval = 1000/60; //1000 ms or 1 second / FPS (always set before timer)
 var timer = setInterval(animate, interval);
 
 
-
 var player = new GameObject({x:canvas.width/2, y: 750, width:30, height:90, color: "rgba(12,240,229,0)"})
 var kiko = new Image()
 kiko.src = "images/kiko.png"
@@ -89,7 +88,7 @@ var health = 100
 var healthBar = new GameObject({x: 850, y: 50, width: 250, height: 20, color: "blue"})
 var healthBarText = new GameObject()
 
-
+var acc = (pScore % 1000)
 /******************************************************** SCREEN ROLLING VELOCITY *******************************************************************/
 
 line.vy = 1
@@ -106,13 +105,76 @@ toothM.vy = rand(2,4)
 toothL.vy = rand(2,4)
 toothR.vy = rand(2,4)
 
+/******************************************************** GAME STATES & FUNCTION KEYPRESS ******************************************************************/
 
-function animate()
+var gameStates = []
+var currentState = 0
+var gameOver = true
+
+var end = new Image()
+end.src = "images/gameover.png"
+
+var title = new Image()
+title.src = "images/gamestart.png"
+
+var gameplay = new Image()
+gameplay.src = "images/instructions.png"   
+
+
+
+function keyStart()
 {
+    if(gameOver == true)
+    {
+        if(space)
+        {
+            currentState = 1
+        }
+        
+    }
+}
 
-	ctx.clearRect(0,0,canvas.width, canvas.height);
+function keyContinue()
+{
+    if(gameOver == true)
+    {
+        if(enter)
+        {
+           currentState = 2
+        }
+   }
+}
+
+function keyRestart()
+{
+    if(gameOver == true)
+    {
+        if(restart)
+        {
+            health = 100
+            currentState = 2
+        }
+    }
+}
 
 
+
+gameStates[0] = function()
+{
+    ctx.drawImage(title, 0, 0, canvas.width, canvas.height)
+    keyStart()
+
+}
+
+gameStates[1] = function()
+{
+    ctx.drawImage(gameplay, 0, 0, canvas.width, canvas.height)
+    keyContinue()
+
+}
+
+gameStates[2] = function()
+{
     /******************************************************** IMPLEMENT VELOCITY ******************************************************************/
     
     lineY += line.vy
@@ -287,6 +349,7 @@ function animate()
     }
 
     /************************************************************ INVINCIBILITY ******************************************************************/
+    
     for(var f = 0; f < invincible.length; f++)
     {
         invincible[f].y += invincible[f].vy
@@ -353,9 +416,10 @@ function animate()
     score.drawScore()
 
     /************************************************************ HEALTH & GAME OVER CONDITION ******************************************************************/
+    
     if(health == 100)
     {
-        ctx.fillStyle =  "blue" //"rgba(12,240,229,0)";
+        ctx.fillStyle =  "rgb(133, 207, 216)" //"rgba(12,240,229,0)";
 		ctx.strokeStyle = "black";
 		ctx.lineWidth = "2";
 		ctx.fillRect(725, 50, 250, 20);
@@ -364,8 +428,8 @@ function animate()
 
     if(health == 80)
 	{
-		ctx.fillStyle =  "blue" //"rgba(12,240,229,0)";
-		ctx.strokeStyle = "black";
+		ctx.fillStyle =  "rgb(133, 207, 216)" //"rgba(12,240,229,0)";
+		ctx.strokeStyle = "rgb(116, 16, 98)"
 		ctx.lineWidth = "2";
 		ctx.fillRect(725, 50, 200, 20);
 		ctx.strokeRect(725, 50, 250, 20 )
@@ -373,8 +437,8 @@ function animate()
 
     if(health == 60)
 	{
-		ctx.fillStyle =  "blue" //"rgba(12,240,229,0)";
-		ctx.strokeStyle = "black";
+		ctx.fillStyle =  "rgb(133, 207, 216)" //"rgba(12,240,229,0)";
+		ctx.strokeStyle = "rgb(116, 16, 98)"
 		ctx.lineWidth = "2";
 		ctx.fillRect(725, 50, 150, 20);
 		ctx.strokeRect(725, 50, 250, 20 )
@@ -382,8 +446,8 @@ function animate()
 
     if(health == 40)
 	{
-		ctx.fillStyle =  "blue" //"rgba(12,240,229,0)";
-		ctx.strokeStyle = "black";
+		ctx.fillStyle =  "rgb(133, 207, 216)" //"rgba(12,240,229,0)";
+		ctx.strokeStyle = "rgb(116, 16, 98)"
 		ctx.lineWidth = "2";
 		ctx.fillRect(725, 50, 100, 20);
 		ctx.strokeRect(725, 50, 250, 20 )
@@ -391,8 +455,8 @@ function animate()
 
     if(health == 20)
 	{
-		ctx.fillStyle =  "blue" //"rgba(12,240,229,0)";
-		ctx.strokeStyle = "black";
+		ctx.fillStyle =  "rgb(133, 207, 216)" //"rgba(12,240,229,0)";
+		ctx.strokeStyle = "rgb(116, 16, 98)"
 		ctx.lineWidth = "2";
 		ctx.fillRect(725, 50, 50, 20);
 		ctx.strokeRect(725, 50, 250, 20 )
@@ -401,21 +465,35 @@ function animate()
     
     if(health <= 0)
     {
-        ctx.clearRect(0,0,canvas.width, canvas.height);
-
         superFairy = false 
-
-        ctx.save();
-		ctx.fillStyle = "black"
-    	ctx.font = "50px arial"
-    	ctx.fillText("GAME OVER... ", 350, 425)
-		ctx.restore();
+        currentState++
 
     }
+}
+gameStates[3] = function()
+{
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+
+
+        ctx.drawImage(end, 0, 0, canvas.width, canvas.height)
+
+        keyRestart()
+}
+
+/************************************************************ MAIN FUNCTION (ANIMATE) ******************************************************************/
+
+function animate()
+{
+
+	ctx.clearRect(0,0,canvas.width, canvas.height);
+
+    gameStates[currentState]()
+
+    
 
 }
 
- /************************************************************ INVINCIBILITY FUNCTION ******************************************************************/
+/************************************************************ INVINCIBILITY FUNCTION ******************************************************************/
 
 function setInvincible()
 {

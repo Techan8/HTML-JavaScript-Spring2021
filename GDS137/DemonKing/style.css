@@ -1,0 +1,10 @@
+html, body{
+    display: flex;
+    justify-content: center;
+    background-image: url("images/bg.png");
+}
+
+#canvas{
+    background-color: rgb(247, 196, 221);
+    border: 5px solid rgb(116, 10, 98)
+}
