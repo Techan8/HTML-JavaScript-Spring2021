@@ -155,6 +155,7 @@ function keyRestart()
         {
             space = false
             health = 100
+            player.x = canvas.width / 2
 
             bacteriaM.y = rand(-250, -495)
             bacteriaL.y = rand(-250, -495)
@@ -163,6 +164,8 @@ function keyRestart()
             toothM.y = rand(-25, -560)
             toothL.y = rand(-25, -560)
             toothR.y = rand(-25, -560)
+
+            invincible.y = rand(-2500, -2000 )
 
             currentState = 2
         }
@@ -369,8 +372,8 @@ gameStates[2] = function()
         if(invincible[f].y > canvas.height)
         {
             invincible[f].x = fairyPos[Math.floor(rand(0,2.9))];
-            invincible[f].y = rand(-1500, -1000 )
-            invincible[f].vy = rand(1,5)
+            invincible[f].y = rand(-2500, -2000 )
+            invincible[f].vy = rand(3,5)
 			
         }
 
@@ -378,7 +381,7 @@ gameStates[2] = function()
 		{
 			invincible[f].x = fairyPos[Math.floor(rand(0,2.9))];
             invincible[f].y = rand(-3500, -3000 )
-            invincible[f].vy = rand(1,5)
+            invincible[f].vy = rand(3,5)
 
             health = health + 20
             if(health > 100)
