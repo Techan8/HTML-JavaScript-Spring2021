@@ -128,6 +128,7 @@ function keyStart()
     {
         if(space)
         {
+            space = false
             currentState = 1
         }
         
@@ -138,9 +139,10 @@ function keyContinue()
 {
     if(gameOver == true)
     {
-        if(enter)
+        if(space)
         {
-           currentState = 2
+            space = false
+            currentState = 2
         }
    }
 }
@@ -149,9 +151,19 @@ function keyRestart()
 {
     if(gameOver == true)
     {
-        if(restart)
+        if(space)
         {
+            space = false
             health = 100
+
+            bacteriaM.y = rand(-250, -495)
+            bacteriaL.y = rand(-250, -495)
+            bacteriaR.y = rand(-250, -495)
+
+            toothM.y = rand(-25, -560)
+            toothL.y = rand(-25, -560)
+            toothR.y = rand(-25, -560)
+
             currentState = 2
         }
     }
@@ -245,19 +257,19 @@ gameStates[2] = function()
 
     if(bacteriaM.y  > canvas.height)
     {
-        bacteriaM.y = -250
+        bacteriaM.y = rand(-250, -495)
         bacteriaM.vy = rand(2.5,4.5)
     }
 
     if(bacteriaL.y  > canvas.height)
     {
-        bacteriaL.y = -350
+        bacteriaL.y = rand(-250, -495)
         bacteriaL.vy = rand(2.5,4.5)
     }
 
     if(bacteriaR.y  > canvas.height)
     {
-        bacteriaR.y = -495
+        bacteriaR.y = rand(-250, -495)
         bacteriaR.vy = rand(2.5,4.5)
     }
 
@@ -265,19 +277,19 @@ gameStates[2] = function()
     
     if(toothM.y > canvas.height)
     {
-        toothM.y = -25
+        toothM.y = rand(-25, -560)
         toothM.vy = rand(2,4)
     }
 
     if(toothL.y > canvas.height)
     {
-        toothL.y = -285
+        toothL.y = rand(-25, -560)
         toothL.vy = rand(2,4)
     }
 
     if(toothR.y > canvas.height)
     {
-        toothR.y = -560
+        toothR.y = rand(-25, -560)
         toothR.vy = rand(2,4)
     }
 
@@ -365,7 +377,7 @@ gameStates[2] = function()
         if(player.hitTestObject(invincible[f]))
 		{
 			invincible[f].x = fairyPos[Math.floor(rand(0,2.9))];
-            invincible[f].y = rand(-1500, -1000 )
+            invincible[f].y = rand(-3500, -3000 )
             invincible[f].vy = rand(1,5)
 
             health = health + 20
