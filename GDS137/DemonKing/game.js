@@ -83,6 +83,7 @@ fairy.src = "images/fairy.png"
 var score = new GameObject()
 var pScore = 0
 var highScore = 0
+var speed = 0;
 
 var health = 100
 var healthBar = new GameObject({x: 850, y: 50, width: 250, height: 20, color: "blue"})
@@ -255,25 +256,29 @@ gameStates[2] = function()
     {
         line3Y = -1600
     }
+    /********************************************************** Score Incremnt *********************************************************************/
 
+    var divident = 3;
+    speed = (pScore / 50);
+    console.log(speed);
     /******************************************************** BACTERIA'S MOVEMENT ******************************************************************/
 
     if(bacteriaM.y  > canvas.height)
     {
         bacteriaM.y = rand(-250, -495)
-        bacteriaM.vy = rand(2.5,4.5)
+        bacteriaM.vy = rand(2.5,4.5) + (speed / divident);
     }
 
     if(bacteriaL.y  > canvas.height)
     {
         bacteriaL.y = rand(-250, -495)
-        bacteriaL.vy = rand(2.5,4.5)
+        bacteriaL.vy = rand(2.5,4.5) + (speed / divident);
     }
 
     if(bacteriaR.y  > canvas.height)
     {
         bacteriaR.y = rand(-250, -495)
-        bacteriaR.vy = rand(2.5,4.5)
+        bacteriaR.vy = rand(2.5,4.5) + (speed / divident);
     }
 
     /******************************************************** TOOTH'S MOVEMENT ******************************************************************/
@@ -281,19 +286,19 @@ gameStates[2] = function()
     if(toothM.y > canvas.height)
     {
         toothM.y = rand(-25, -560)
-        toothM.vy = rand(2,4)
+        toothM.vy = rand(2,4) + (speed / divident);
     }
 
     if(toothL.y > canvas.height)
     {
         toothL.y = rand(-25, -560)
-        toothL.vy = rand(2,4)
+        toothL.vy = rand(2,4) + (speed / divident);
     }
 
     if(toothR.y > canvas.height)
     {
         toothR.y = rand(-25, -560)
-        toothR.vy = rand(2,4)
+        toothR.vy = rand(2,4) + (speed / divident);
     }
 
     /************************************************************ COLLISION DETECTION ******************************************************************/
